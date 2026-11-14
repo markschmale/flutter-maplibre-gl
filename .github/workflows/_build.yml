@@ -62,6 +62,8 @@ jobs:
         with:
           name: maplibre-flutter-demo.apk
           path: maplibre_gl_example/build/app/outputs/flutter-apk/app-release.apk
+          # Daily beta builds are diagnostic; keep one week. Other builds use the repository default.
+          retention-days: ${{ inputs.flutter-channel == 'beta' && 7 || 0 }}
 
       - if: inputs.platform == 'ios'
         name: Build iOS package
@@ -72,6 +74,7 @@ jobs:
         with:
           name: maplibre-flutter-demo.app
           path: maplibre_gl_example/build/ios/iphonesimulator
+          retention-days: ${{ inputs.flutter-channel == 'beta' && 7 || 0 }}
 
       - if: inputs.platform == 'web' && !inputs.web-release
         name: Build web

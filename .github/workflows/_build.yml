@@ -65,8 +65,9 @@ jobs:
         with:
           name: maplibre-flutter-demo.apk
           path: maplibre_gl_example/build/app/outputs/flutter-apk/app-release.apk
+          # Keep tagged release output for the repository retention period.
           # Diagnostic beta builds expire after 14 days; routine CI builds after 7.
-          retention-days: ${{ inputs.flutter-channel == 'beta' && 14 || 7 }}
+          retention-days: ${{ startsWith(github.ref, 'refs/tags/') && github.retention_days || (inputs.flutter-channel == 'beta' && 14 || 7) }}
 
       - if: inputs.platform == 'ios'
         name: Build iOS package
@@ -77,7 +78,7 @@ jobs:
         with:
           name: maplibre-flutter-demo.app
           path: maplibre_gl_example/build/ios/iphonesimulator
-          retention-days: ${{ inputs.flutter-channel == 'beta' && 14 || 7 }}
+          retention-days: ${{ startsWith(github.ref, 'refs/tags/') && github.retention_days || (inputs.flutter-channel == 'beta' && 14 || 7) }}
 
       - if: inputs.platform == 'web' && !inputs.web-release
         name: Build web

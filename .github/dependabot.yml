@@ -4,6 +4,10 @@ enable-beta-ecosystems: true
 updates:
   # GitHub Actions
   - package-ecosystem: github-actions
+    groups:
+      github-actions-minor-and-patch:
+        patterns: ["*"]
+        update-types: ["minor", "patch"]
     directory: /
     schedule:
       interval: daily
@@ -16,6 +20,7 @@ updates:
     open-pull-requests-limit: 10
     groups:
       root-runtime-deps:
+        update-types: ["minor", "patch"]
         applies-to: version-updates
         patterns:
           - "*"
@@ -27,6 +32,7 @@ updates:
       interval: daily
     groups:
       codegen-tools:
+        update-types: ["minor", "patch"]
         applies-to: version-updates
         patterns:
           - dart_style
@@ -41,6 +47,7 @@ updates:
       interval: daily
     groups:
       maplibre-gl-core:
+        update-types: ["minor", "patch"]
         applies-to: version-updates
         patterns:
           - "*"
@@ -52,6 +59,7 @@ updates:
       interval: daily
     groups:
       maplibre-gl-web:
+        update-types: ["minor", "patch"]
         applies-to: version-updates
         patterns:
           - "*"
@@ -63,6 +71,7 @@ updates:
       interval: daily
     groups:
       platform-interface:
+        update-types: ["minor", "patch"]
         applies-to: version-updates
         patterns:
           - "*"
@@ -74,6 +83,7 @@ updates:
       interval: daily
     groups:
       example-deps:
+        update-types: ["minor", "patch"]
         applies-to: version-updates
         patterns:
           - "*"
@@ -85,20 +95,24 @@ updates:
       interval: weekly
     groups:
       gradle-plugin:
+        update-types: ["minor", "patch"]
         applies-to: version-updates
         patterns:
           - gradle
           - com.android.tools.build:gradle
       kotlin:
+        update-types: ["minor", "patch"]
         applies-to: version-updates
         patterns:
           - org.jetbrains.kotlin:kotlin-*
       androidx-core:
+        update-types: ["minor", "patch"]
         applies-to: version-updates
         patterns:
           - androidx.core:*
           - androidx.annotation:*
       google-maps-play-services:
+        update-types: ["minor", "patch"]
         applies-to: version-updates
         patterns:
           - com.google.android.gms:play-services-*
@@ -110,19 +124,23 @@ updates:
       interval: weekly
     groups:
       gradle-plugin:
+        update-types: ["minor", "patch"]
         applies-to: version-updates
         patterns:
           - gradle
           - com.android.tools.build:gradle
       kotlin:
+        update-types: ["minor", "patch"]
         applies-to: version-updates
         patterns:
           - org.jetbrains.kotlin:kotlin-*
       androidx:
+        update-types: ["minor", "patch"]
         applies-to: version-updates
         patterns:
           - androidx.*:*
       google-play-services:
+        update-types: ["minor", "patch"]
         applies-to: version-updates
         patterns:
           - com.google.android.gms:play-services-*
